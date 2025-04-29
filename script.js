@@ -168,11 +168,13 @@ function loadFunctions(){
                 return element.replace("[checked]", "").replace(" ", "").trim()
             }
     
+            // [ ] Refinar o script na questão do upload das imagens, deixar uma opção para escolher se deseja salvar ou não
+
             jsonObject.forEach(function(obj) {
                 for (const key in obj) {
                     if (Object.hasOwnProperty.call(obj, key)) {
                         var JSONval = obj[key];
-                        $(`.plugoo-dashboard-panel input[name="${key}"][value], .netzee-dashboard-panel input[name="${key}"][value]`).each(function() {
+                        $(`.plugoo-dashboard-panel input[name="${key}"], .netzee-dashboard-panel input[name="${key}"]`).each(function() {
                             let elementName = $(this).attr("name");
                             let elementVal = $(this).val();
                             if ($(this).attr("type") === "radio") {
@@ -192,7 +194,10 @@ function loadFunctions(){
                                     $(this).click()
                                 }
                             } else if (JSONval.includes("/img/")) {
-                                console.log(`Img here skipping`)
+                                // console.log(`Img here skipping`)
+                                // $(this).attr("type", "text")
+                                // $(this).val(`${JSONval}`)
+
                             } else {
                                 $(this).val(`${JSONval}`)
         
